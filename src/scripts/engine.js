@@ -19,11 +19,11 @@ const state = {
 };
 
 const playerSides = {
-    player: "player-field-card",
-    computer: "computer-field-card"
+    player: "player-cards",
+    computer: "computer-cards"
 }
 
-const pathImages = ".src/assets/icons/";
+const pathImages = "./src/assets/icons/";
 
 const cardData = [
     {
@@ -60,7 +60,7 @@ async function getRandomCardId() {
 async function createCardImage(idCard, fieldSide) {
     const cardImage = document.createElement("img");
     cardImage.setAttribute("height", "100px");
-    cardImage.setAttribute("src", ".src/assets/icons/card-back.png");
+    cardImage.setAttribute("src", "./src/assets/icons/card-back.png");
     cardImage.setAttribute("data-id", idCard)
     cardImage.classList.add("card");
 
