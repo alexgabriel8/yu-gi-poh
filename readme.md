@@ -1,9 +1,7 @@
-# Yu-Gi-Oh | Jo-ken-po Edition
+# Yu-Gi-Poh
 
-Jogo de jokenpo que criei para explicar conceitos de lógica de programação aplicados a jogos
+Rock, Paper, Scissors game using Yu-Gi-Oh as setting. Built with HTML, CSS, JS and some [RPGUI](https://github.com/RonenNess/RPGUI) assets in a [DIO](https://web.dio.me/) Bootcamp.
 
-conceitos abordados:
+Fun fact: the name Yu-Gi-Poh is a play with Yu-Gi-**Oh** and Jo-Ken-**Po** (another name for Rock, Paper, Scissors).
 
-- Armazenamento e gerenciamento de estado manual
-- Funções limpas
-- Organização de código
+![Game preview](./readme-assets/game-preview.gif)
