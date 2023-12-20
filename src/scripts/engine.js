@@ -81,20 +81,42 @@ async function createCardImage(idCard, fieldSide) {
 async function setCardsField(cardId) {
     await removeAllCardsImages();
     let computerCardId = await getRandomCardId();
-    state.fieldCards.player.style.display = "block"
-    state.fieldCards.computer.style.display = "block"
-    
-    state.fieldCards.player.src = cardData[cardId].img;
-    state.fieldCards.computer.src = cardData[computerCardId].img;
 
+    await showHiddenCardFieldsImages(true);
+
+    await hideCardDetails();
+
+    await drawCardsInField(cardId, computerCardId);
+    
     let duelResults = await checkDuelResults(cardId, computerCardId)
 
     await updateScore();
     await drawButton(duelResults);
 }
 
+async function drawCardsInField(cardId, computerCardId) {
+    state.fieldCards.player.src = cardData[cardId].img;
+    state.fieldCards.computer.src = cardData[computerCardId].img;
+}
+
 async function updateScore() {
     state.score.scoreBox.innerText = `Win: ${state.score.playerScore} | Lose: ${state.score.computerScore}`
+}
+
+async function showHiddenCardFieldsImages(show) {
+    if(show) {
+        state.fieldCards.player.style.display = "block"
+        state.fieldCards.computer.style.display = "block"
+    } else if(show === false) {
+        state.fieldCards.player.style.display = "none"
+        state.fieldCards.computer.style.display = "none"
+    }
+}
+
+async function hideCardDetails() {
+    state.cardSprites.avatar.src = "";
+    state.cardSprites.name.innerText = "Select";
+    state.cardSprites.type.innerText = "a card";
 }
 
 async function drawButton(text) {
@@ -149,9 +171,6 @@ async function resetDuel() {
     state.cardSprites.avatar.src = "";
     state.actions.button.style.display = "none";
 
-    state.fieldCards.player.style.display = "none";
-    state.fieldCards.computer.style.display = "none";
-
     init();
 }
 
@@ -165,6 +184,8 @@ async function playAudio(status) {
 }
 
 function init() {
+    showHiddenCardFieldsImages(false)
+
     drawCards(5, state.playerSides.player);
     drawCards(5, state.playerSides.computer);
 }
