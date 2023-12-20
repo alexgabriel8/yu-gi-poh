@@ -66,6 +66,7 @@ async function createCardImage(idCard, fieldSide) {
     cardImage.classList.add("card");
 
     if(fieldSide === state.playerSides.player) {
+        cardImage.classList.add("player")
         cardImage.addEventListener("mouseover", () => {
             drawSelectedCard(idCard);
         })
